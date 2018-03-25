@@ -1,0 +1,101 @@
+if (!isServer) exitWith{};
+
+
+
+
+
+
+
+while {true} do {
+
+
+
+sleep 30;
+
+
+
+{ 
+
+	if (side _x == west) then 
+
+	{ 
+
+	zeus_1 addCuratorEditableObjects [[_x],true];
+	zeus_2 addCuratorEditableObjects [[_x],true];
+	zeus_3 addCuratorEditableObjects [[_x],true];
+	zeus_4 addCuratorEditableObjects [[_x],true];
+	zeus_5 addCuratorEditableObjects [[_x],true];
+
+	}; 
+
+	
+
+	if (side _x == east) then 
+
+	{ 
+
+	zeus_1 addCuratorEditableObjects [[_x],true];
+	zeus_2 addCuratorEditableObjects [[_x],true];
+	zeus_3 addCuratorEditableObjects [[_x],true];
+	zeus_4 addCuratorEditableObjects [[_x],true];
+	zeus_5 addCuratorEditableObjects [[_x],true];
+	
+	}; 
+
+	
+
+	if (side _x == independent) then 
+
+	{ 
+
+	zeus_1 addCuratorEditableObjects [[_x],true];
+	zeus_2 addCuratorEditableObjects [[_x],true];
+	zeus_3 addCuratorEditableObjects [[_x],true];
+	zeus_4 addCuratorEditableObjects [[_x],true];
+	zeus_5 addCuratorEditableObjects [[_x],true];
+
+	};
+
+	
+
+	if (side _x == civilian) then 
+
+	{ 
+
+	zeus_1 addCuratorEditableObjects [[_x],true];
+	zeus_2 addCuratorEditableObjects [[_x],true];]
+	zeus_3 addCuratorEditableObjects [[_x],true];
+	zeus_4 addCuratorEditableObjects [[_x],true];
+	zeus_5 addCuratorEditableObjects [[_x],true];
+
+	};
+	
+	if (side _x == empty) then 
+
+	{ 
+
+	zeus_1 addCuratorEditableObjects [[_x],true];
+	zeus_2 addCuratorEditableObjects [[_x],true];
+	zeus_3 addCuratorEditableObjects [[_x],true];
+	zeus_4 addCuratorEditableObjects [[_x],true];
+	zeus_5 addCuratorEditableObjects [[_x],true];
+
+	};
+
+	{zeus_1 addCuratorEditableObjects [[_x],true]} foreach vehicles;
+	{zeus_2 addCuratorEditableObjects [[_x],true]} foreach vehicles;
+	{zeus_3 addCuratorEditableObjects [[_x],true]} foreach vehicles;
+	{zeus_4 addCuratorEditableObjects [[_x],true]} foreach vehicles;
+	{zeus_5 addCuratorEditableObjects [[_x],true]} foreach vehicles;
+
+	{zeus_1 addCuratorEditableObjects [[_x],true]} foreach (allMissionObjects "Man");
+	{zeus_2 addCuratorEditableObjects [[_x],true]} foreach (allMissionObjects "Man");
+	{zeus_3 addCuratorEditableObjects [[_x],true]} foreach (allMissionObjects "Man");
+	{zeus_4 addCuratorEditableObjects [[_x],true]} foreach (allMissionObjects "Man");
+	{zeus_5 addCuratorEditableObjects [[_x],true]} foreach (allMissionObjects "Man");
+
+	}foreach allUnits;
+
+	
+
+};

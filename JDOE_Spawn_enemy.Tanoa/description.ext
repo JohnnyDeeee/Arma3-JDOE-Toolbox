@@ -1,0 +1,12 @@
+author="JohnDoe";
+OnLoadName = "Spawn script test";
+OnLoadMission = "Testing spawn script";
+
+overviewText = "Spawn script testing mission";
+
+allowFunctionsLog = 1;
+enableDebugConsole = 1;
+
+respawn = "BASE";
+respawnDelay = 0;
+disabledAI=1;

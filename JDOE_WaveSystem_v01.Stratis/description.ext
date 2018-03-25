@@ -1,0 +1,8 @@
+respawn = "BASE";
+respawnDelay = 2;
+ReviveMode = 1;
+disabledAI = 1;
+
+author = "JohnDoe";
+OnLoadName = "Wave System [JDOE]";
+OnLoadMission = "This is a demo mission to test the Wave System script.";

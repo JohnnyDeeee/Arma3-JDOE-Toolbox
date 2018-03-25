@@ -1,0 +1,66 @@
+// Create object
+_arsenal = createVehicle ["Sign_Arrow_Large_F", position player, [], 0, "FLY"];
+
+// Add action
+_arsenal addAction ["Hint", {hint "test"}];
+
+// Create full arsenal from cursorTarget
+[[cursorTarget, ["Full Arsenal", {["Open", true] spawn BIS_fnc_arsenal}, [], 6]],"addAction",true,true] call BIS_fnc_MP;
+
+// Hint
+hint typeOf cursorTarget;
+
+// Delete objects near
+{
+ deleteVehicle _x;
+} forEach nearestObjects[player, [], 3];
+
+
+// Systemchat
+{
+ systemChat name _x;
+} forEach allUnits;
+
+// Set damage for player name
+{  
+ if(name _x == "Jim Extreme") then
+ {
+  _x setDamage 1; 
+ };
+} forEach allUnits;
+
+// Let person fly up
+{   
+ if(name _x == "John_Doe") then 
+ { 
+  _vel = velocity _x;
+  _dir = direction _x;
+  _speed = 100;
+  _x setVelocity[
+   (_vel select 0),
+   (_vel select 1),
+   (_vel select 2) + (sin _dir * _speed)
+  ];
+ }; 
+} forEach allUnits;
+
+// Speed boost vehicle
+fn_turbo = 
+{
+_veh = vehicle player;  
+_speed = speed _veh;  
+_velXM = velocityModelSpace _veh select 0;  
+_velYM = velocityModelSpace _veh select 1;   
+_dir = direction _veh;  
+_velX = velocity _veh select 0;  
+_velY = velocity _veh select 1;  
+_velZ = velocity _veh select 2;  
+_speedBoost = 100;  
+ 
+_veh setVelocity [(((sin(_dir)) * _speedBoost) + _velX),(((cos(_dir)) * _speedBoost) + _velY),_velZ];
+};
+
+player addAction["Boost", {call fn_turbo}, [], 99];
+
+// Map click teleport
+player onMapSingleClick "if (_alt) then {player setPosATL _pos}";

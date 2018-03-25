@@ -1,0 +1,16 @@
+v0.1
+- dialogs.hpp (class radio_comm_commander): Added option for persistent save.
+- dialogs.hpp (class radio_comm_commander): Changed button layout so that "persistent save" button could be added.
+- init.sqf: Added code that creates mission paramater global variables
+- description.ext (class Params): Added paramater for autosave timer
+- serverAutosave.sqf: Changed default sleep time (3600) into a mission paramater
+
+v0.2
+- dialogs.hpp (class radio_comm_commander + radio_comm_player): Added button to go to the JDOE_options dialog
+- dialogs.hpp (class JDOE_options): Added new class for some custom options
+- /JDOE: Added Fatique.sqf
+- /JDOE: Added FastTravelRadiusMarkers.sqf
+- description.ext (class Params): Added paramater for fast travel radius
+- fastTravelRadio.sqf: changed default 50 meter fasttravel radius into fasttravel mission paramater
+- altFastTravel.sqf: changed default 50 meter fasttravel radius into fasttravel mission paramater
+- inconsciente.sqf: commented lines where "playMoveNow "AmovPpneMstpSnonWnonDnon_healed" was used
