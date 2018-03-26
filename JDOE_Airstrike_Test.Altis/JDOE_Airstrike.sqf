@@ -25,7 +25,7 @@ JDOE_CreateRadioOption = {
 // TODO: Gotta test this
 JDOE_remoteCommandChat = {
 	params ["_caller", "_message"];
-	[_caller, _message] remoteExec ["commandChat", 0, true];
+	[_caller, _message] remoteExec ["sideChat", 0, true];
 };
 
 JDOE_Airstrike = {
@@ -34,17 +34,19 @@ JDOE_Airstrike = {
 	// Remove onMapSingleClick handler
 	[JDOE_Airstrike_onMapSingleClick, "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
 
+	_airbaseIdentity = [west, "AirBase"];
+
 	if (!isNil "_dropPos") then { // Positions are arrays [x,y,z]
 		if (serverTime >= JDOE_LastAirstrikeTime + _timeout) then {
 			JDOE_LastAirstrikeTime = serverTime;
-			[_dropPos, _allowDamage, _bombName, _vehicleName] spawn {
+			[_dropPos, _allowDamage, _bombName, _vehicleName, _airbaseIdentity] spawn {
 				// Variable initialization
 				_dropPos = _this select 0;
 				_allowDamage = _this select 1;
 				_bombName = _this select 2;
 				_vehicleName = _this select 3;
+				_airbaseIdentity = _this select 4;
 				_dropGrid = mapGridPosition _dropPos;
-				_airbaseIdentity = [west, "AirBase"];
 				_planePrecision = getNumber (configFile >> "CfgVehicles" >> _vehicleName >> "precision"); // Used for calculating how big the trigger should be, because planes are not "precise"
 
 				// Chat
@@ -96,10 +98,10 @@ JDOE_Airstrike = {
 				call compile format ["_bombTrigger setTriggerStatements ['this', '[%1, %2, %3, thisList] spawn JDOE_BombTriggerActivation', '']", str _bombName, _dropPos, _airbaseIdentity];
 			};
 		} else {
-			player commandChat format ["You need to wait %1 seconds before you can call in another airstrike.", ceil ((JDOE_LastAirstrikeTime + _timeout) - serverTime)];
+			_airbaseIdentity sideChat format ["You need to wait %1 seconds before you can call in another airstrike.", ceil ((JDOE_LastAirstrikeTime + _timeout) - serverTime)];
 		};
 	} else {
-		player commandChat "Invalid coordinates!";
+		_airbaseIdentity sideChat "Invalid coordinates!";
 	};
 };
 
