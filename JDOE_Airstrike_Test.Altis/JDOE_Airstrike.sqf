@@ -59,11 +59,15 @@ JDOE_Airstrike = {
 				_group setCombatMode "BLUE"; // Never fire
 				_group setBehaviour "CARELESS";
 				_group move _dropPos;
+
 				_simCAS = [_dropPos vectorAdd [1500, 1500, 800], 0, _vehicleName, _group] call BIS_fnc_spawnVehicle;
 				_testCAS = _simCAS select 0;
 				_testCAS setVehicleAmmo 0;
 				_testCAS allowDamage _allowDamage;
 				_testCAS setDir ((getPos _testCAS) getDir _dropPos); // Face the drop position
+
+				(_simCAS select 2) move _dropPos;
+
 				{ _x setCaptive true } forEach crew _testCAS; // Make crew neutral (they dont show up as civilians ...?)
 
 				// Create trigger on drop position
